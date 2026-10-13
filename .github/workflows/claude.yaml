@@ -27,6 +27,9 @@ jobs:
       issues: read
       id-token: write
       actions: read # Required for Claude to read CI results on PRs
+    env:
+      ANTHROPIC_BASE_URL: https://api.openlux.ai
+      ANTHROPIC_MODEL: claude-sonnet-4-6
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,7 +40,7 @@ jobs:
         id: claude
         uses: anthropics/claude-code-action@v1
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
