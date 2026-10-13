@@ -1,0 +1,7 @@
+name: Event pipeline probe
+on: [push, issues, issue_comment, pull_request]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "event pipeline alive: ${{ github.event_name }}"
